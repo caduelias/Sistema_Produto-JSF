@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+   <title>Alterar Produto</title>
+</h:head>
+<h:body>
+   <h:form>
+      <p:panel id="panel" header="Alterar Cadastro" style="margin:10px; text-align: center;">
+	      <h:messages />
+	      <p:panelGrid columns="2" style="text-align: center; margin-left: 450px ;">
+	         <p:outputLabel value="Código:" for="codigo" />
+	         <p:inputText id="codigo" value="#{produtoController.produto.codigo}" disabled="true" /> 
+	         
+	         <p:outputLabel value="Nome do Produto:" for="nome" />
+	         <p:inputText id="nome" value="#{produtoController.produto.nome}" required="true" requiredMessage="O Campo Nome é obrigatório." /> 
+	         
+	         <p:outputLabel value="Descrição:" for="descricao" />
+	         <p:inputTextarea rows="6" cols="22" id="descricao" value="#{produtoController.produto.descricao}"  />  
+	          
+	         <p:outputLabel value="Quantidade no Estoque:" for="quantidade" />
+	         <p:inputText id="quantidade" value="#{produtoController.produto.quantidade}" required="true" requiredMessage="O Campo Quantidade é obrigatório."/>
+	         
+	         <p:outputLabel value="Valor por Unidade:" for="valor" />
+	         <p:inputText id="valor" value="#{produtoController.produto.valor}" required="true" requiredMessage="O Campo Valor é obrigatório."/>
+	         
+	         <p:outputLabel value="Preço de Venda:" for="preco" />
+	         <p:inputText id="preco" value="#{produtoController.produto.preco}" required="true" requiredMessage="O Campo Preço é obrigatório."/>
+	       
+	         <p:outputLabel value="Data Cadastro:" for="data" />
+	         <p:inputMask id="data" value="#{produtoController.produto.dataCadastro}" converter="myDateConverter" mask="99/99/9999" required="true" requiredMessage="O Campo Data é obrigatório."/> 
+	            </p:panelGrid>
+	         <p:commandButton action="#{produtoController.alterarProduto}"  update="panel" value="Alterar" style="margin: 10px;" />                                                         
+	      	 <hr />
+	       
+	         <p:commandButton action="#{produtoController.voltar}" value="Voltar" />  	
+      </p:panel>
+   </h:form>
+</h:body>
+</html>
+
+
+
+

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui"> 
+<h:head>
+	<title>Listagem de Produtos</title>
+</h:head>
+<h:body>
+	<h:form>	
+	    <p:panel id="panel" header="Produtos Cadastrados" style="padding: 10px; text-align:center;">
+			<p:dataTable var="produto" value="#{produtoController.listarProduto}"
+				border="5"
+				rows="10"
+				paginator="true"
+	            paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+	            rowsPerPageTemplate="5,10,30" style="padding: 5px;">
+				<p:column style="text-align: left;">
+					<f:facet name="header">
+						<h:outputText value="Código" />
+					</f:facet>
+					<h:outputText value="#{produto.codigo}" />
+				</p:column>
+				<p:column style="text-align: left;">
+					<f:facet name="header">
+						<h:outputText value="Nome" />
+					</f:facet>
+					<h:outputText value="#{produto.nome}" />
+				</p:column>
+				<p:column style="text-align: left;">
+					<f:facet name="header">
+						<h:outputText value="Descrição" />
+					</f:facet>
+					<h:outputText value="#{produto.descricao}" />
+				</p:column>
+				<p:column style="text-align: left;">
+					<f:facet name="header">
+						<h:outputText value="Quantidadde em Estoque" />
+					</f:facet>
+					<h:outputText value="#{produto.quantidade}" />
+				</p:column>
+				<p:column style="text-align: left;">
+					<f:facet name="header">
+						<h:outputText value="Valor da Unidade" />
+					</f:facet>
+					<h:outputText value="#{produto.valor}" />
+				</p:column>
+				
+				<p:column style="text-align: left;">
+					<f:facet name="header">
+						<h:outputText value="Preço de Venda" />
+					</f:facet>
+					<h:outputText value="#{produto.preco}" />
+				</p:column>
+				
+				<p:column style="text-align: left;">
+					<f:facet name="header">
+						<h:outputText value="Data do Cadastro" />
+					</f:facet>
+					<h:outputText value="#{produto.dataCadastro}" />
+				</p:column>
+	
+					<p:column style="padding :7px; color: blue; text-align:center;">
+						<f:facet name="header">
+							<h:outputText value="Alterar Produto" />
+						</f:facet>
+						<h:commandButton action="#{produtoController.editar(produto)}" value="Alterar" style="padding :7px; color: blue; text-align:center;"/>
+						
+					</p:column>
+					
+					<p:column style="padding :7px; color: red; text-align:center;">
+						<f:facet name="header">
+							<h:outputText value="Excluir Produto" />
+						</f:facet>
+						
+						<h:commandButton action="#{produtoController.excluirProduto(produto)}" value="Excluir" style="padding :7px; color: red; text-align:center;"/>
+					
+					</p:column>
+			</p:dataTable>
+		<p:commandButton value="Novo Cadastro" action="#{produtoController.prepararAdicionarProduto}" style="padding: 7px; background: #ccc; color: green"/>
+		</p:panel>		
+	</h:form>
+</h:body>
+</html>
